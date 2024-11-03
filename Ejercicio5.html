@@ -14,7 +14,7 @@
             margin: 10px 0;
             font-size: 16px;
             text-decoration: none;
-            color: #1d6aa8;
+            color: #9c0228;
         }
         a:hover {
             text-decoration: underline;
@@ -37,43 +37,47 @@
     <hr>
 
     <h2>Ejercicio 2</h2>
-    <p>Ejemplos de enlaces y anclas:</p>
+    <p>Ejemplos de enlaces, imágenes y anclas:</p>
     <a href="#ancla1">Enlace a Ancla 1</a>
     <a href="#ancla2">Enlace a Ancla 2</a>
     <p id="ancla1">Este es el Ancla 1</p>
     <p id="ancla2">Este es el Ancla 2</p>
 
-    <img src="https://via.placeholder.com/150" alt="Ejemplo de imagen">
-    <img src="https://via.placeholder.com/150" alt="Otra imagen de ejemplo">
+    <img src="https://via.placeholder.com/150" alt="Ejemplo de imagen" id="imagen1">
+    <img src="https://via.placeholder.com/150" alt="Otra imagen de ejemplo" id="imagen2">
 
-    <h3>Ejercicio de Anclas:</h3>
+    <h3>Ejercicio de Anclas y Elementos del Documento:</h3>
     <a href="#" onclick="mostrarNumeroAnclas()">a) Mostrar número de anclas en el documento</a>
     <a href="#" onclick="mostrarTextoPrimerAncla()">b) Mostrar texto del primer ancla</a>
+    <a href="#" onclick="mostrarNumeroImagenes()">c) Mostrar número de imágenes en el documento</a>
+    <a href="#" onclick="mostrarIdPrimeraImagen()">d) Mostrar ID de la primera imagen</a>
+    <a href="#" onclick="mostrarNumeroEnlaces()">e) Mostrar número de enlaces en el documento</a>
+    <a href="#" onclick="cambiarTitulo()">f) Cambiar título del documento</a>
 
     <script>
-        // Ejercicio a: Mostrar la fecha de la última actualización del documento
+        // Ejercicio 1.a: Mostrar la fecha de la última actualización del documento
         function mostrarUltimaActualizacion() {
             const ultimaActualizacion = document.lastModified;
             alert("Última actualización del documento: " + ultimaActualizacion);
         }
 
-        // Ejercicio b: Mostrar la URL de referencia
+        // Ejercicio 1.b: Mostrar la URL de referencia
         function mostrarReferer() {
             const referer = document.referrer;
             alert("URL de referencia: " + (referer || "No hay referencia"));
         }
 
-        // Ejercicio c: Mostrar el título del documento actual
+        // Ejercicio 1.c: Mostrar el título del documento actual
         function mostrarTitulo() {
             alert("Título del documento: " + document.title);
         }
 
-        // Ejercicio d: Mostrar la URL completa del documento actual
+        // Ejercicio 1.d: Mostrar la URL completa del documento actual
         function mostrarURLCompleta() {
             alert("URL completa del documento: " + window.location.href);
         }
 
-        // Ejercicio e: Ejemplo de escritura antes y después de cargar el documento
+        // Ejercicio 1.e: Ejemplo de escritura antes y después de cargar el documento
         function escribirAntesDeCarga() {
             document.open();
             document.write("<p>Este texto se escribe antes de terminar la carga y no sobrescribe.</p>");
@@ -86,18 +90,48 @@
             document.close();
         }
 
-        // Ejercicio a: Mostrar el número de anclas en el documento
+        // Ejercicio 2.a: Mostrar el número de anclas en el documento
         function mostrarNumeroAnclas() {
             const numeroAnclas = document.anchors.length;
             alert("Número de anclas en el documento: " + numeroAnclas);
         }
 
-        // Ejercicio b: Mostrar el texto dentro del tag del primer ancla (innerHTML)
+        // Ejercicio 2.b: Mostrar el texto dentro del tag del primer ancla (innerHTML)
         function mostrarTextoPrimerAncla() {
             if (document.anchors.length > 0) {
                 alert("Texto del primer ancla: " + document.anchors[0].innerHTML);
             } else {
                 alert("No hay anclas en el documento.");
+            }
+        }
+
+        // Ejercicio 2.c: Mostrar el número de imágenes en el documento
+        function mostrarNumeroImagenes() {
+            const numeroImagenes = document.images.length;
+            alert("Número de imágenes en el documento: " + numeroImagenes);
+        }
+
+        // Ejercicio 2.d: Mostrar el ID de la primera imagen en el documento
+        function mostrarIdPrimeraImagen() {
+            if (document.images.length > 0) {
+                alert("ID de la primera imagen: " + document.images[0].id);
+            } else {
+                alert("No hay imágenes en el documento.");
+            }
+        }
+
+        // Ejercicio 2.e: Mostrar el número de enlaces en el documento
+        function mostrarNumeroEnlaces() {
+            const numeroEnlaces = document.links.length;
+            alert("Número de enlaces en el documento: " + numeroEnlaces);
+        }
+
+        // Ejercicio 2.f: Cambiar el título del documento
+        function cambiarTitulo() {
+            const nuevoTitulo = prompt("Introduce el nuevo título para el documento:");
+            if (nuevoTitulo) {
+                document.title = nuevoTitulo;
+                alert("El título del documento ha sido cambiado a: " + nuevoTitulo);
             }
         }
     </script>

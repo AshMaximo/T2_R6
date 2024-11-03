@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Documentos y Anclas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        a {
+            display: block;
+            margin: 10px 0;
+            font-size: 16px;
+            text-decoration: none;
+            color: #1d6aa8;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejercicios de Documentos y Anclas</h1>
+
+    <h2>Ejercicio 1</h2>
+    <a href="#" onclick="mostrarUltimaActualizacion()">a) Mostrar la fecha de última actualización</a>
+    <a href="#" onclick="mostrarReferer()">b) Mostrar URL de referencia</a>
+    <a href="#" onclick="mostrarTitulo()">c) Mostrar título del documento</a>
+    <a href="#" onclick="mostrarURLCompleta()">d) Mostrar URL completa del documento</a>
+    
+    <p>Ejemplo de escritura en el documento:</p>
+    <button onclick="escribirAntesDeCarga()">Ejemplo antes de cargar (no sobrescribe)</button>
+    <button onclick="escribirDespuesDeCarga()">Ejemplo después de cargar (sobrescribe)</button>
+
+    <hr>
+
+    <h2>Ejercicio 2</h2>
+    <p>Ejemplos de enlaces y anclas:</p>
+    <a href="#ancla1">Enlace a Ancla 1</a>
+    <a href="#ancla2">Enlace a Ancla 2</a>
+    <p id="ancla1">Este es el Ancla 1</p>
+    <p id="ancla2">Este es el Ancla 2</p>
+
+    <img src="https://via.placeholder.com/150" alt="Ejemplo de imagen">
+    <img src="https://via.placeholder.com/150" alt="Otra imagen de ejemplo">
+
+    <h3>Ejercicio de Anclas:</h3>
+    <a href="#" onclick="mostrarNumeroAnclas()">a) Mostrar número de anclas en el documento</a>
+    <a href="#" onclick="mostrarTextoPrimerAncla()">b) Mostrar texto del primer ancla</a>
+
+    <script>
+        // Ejercicio a: Mostrar la fecha de la última actualización del documento
+        function mostrarUltimaActualizacion() {
+            const ultimaActualizacion = document.lastModified;
+            alert("Última actualización del documento: " + ultimaActualizacion);
+        }
+
+        // Ejercicio b: Mostrar la URL de referencia
+        function mostrarReferer() {
+            const referer = document.referrer;
+            alert("URL de referencia: " + (referer || "No hay referencia"));
+        }
+
+        // Ejercicio c: Mostrar el título del documento actual
+        function mostrarTitulo() {
+            alert("Título del documento: " + document.title);
+        }
+
+        // Ejercicio d: Mostrar la URL completa del documento actual
+        function mostrarURLCompleta() {
+            alert("URL completa del documento: " + window.location.href);
+        }
+
+        // Ejercicio e: Ejemplo de escritura antes y después de cargar el documento
+        function escribirAntesDeCarga() {
+            document.open();
+            document.write("<p>Este texto se escribe antes de terminar la carga y no sobrescribe.</p>");
+            document.close();
+        }
+
+        function escribirDespuesDeCarga() {
+            document.open();
+            document.write("<p>Este texto se escribe después de la carga y sobrescribe el contenido.</p>");
+            document.close();
+        }
+
+        // Ejercicio a: Mostrar el número de anclas en el documento
+        function mostrarNumeroAnclas() {
+            const numeroAnclas = document.anchors.length;
+            alert("Número de anclas en el documento: " + numeroAnclas);
+        }
+
+        // Ejercicio b: Mostrar el texto dentro del tag del primer ancla (innerHTML)
+        function mostrarTextoPrimerAncla() {
+            if (document.anchors.length > 0) {
+                alert("Texto del primer ancla: " + document.anchors[0].innerHTML);
+            } else {
+                alert("No hay anclas en el documento.");
+            }
+        }
+    </script>
+</body>
+</html>

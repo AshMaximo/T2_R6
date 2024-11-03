@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información del Navegador</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            max-width: 600px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Propiedad</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody id="infoTabla">
+            <!-- Aquí se insertarán los datos mediante JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        // Objeto con la información del navegador
+        const infoNavegador = {
+            "Nombre del navegador": navigator.appName,
+            "Versión del navegador": navigator.appVersion,
+            "Nombre del motor": navigator.product,
+            "Idioma": navigator.language,
+            "Plataforma": navigator.platform,
+            "Usuario": navigator.userAgent,
+            "Cookies habilitadas": navigator.cookieEnabled,
+            "Java habilitado": navigator.javaEnabled(),
+            "Online": navigator.onLine,
+            "Anchura de la pantalla": screen.width + " px",
+            "Altura de la pantalla": screen.height + " px",
+            "Anchura disponible": screen.availWidth + " px",
+            "Altura disponible": screen.availHeight + " px",
+            "Profundidad de color": screen.colorDepth + " bits",
+            "Resolución de color": screen.pixelDepth + " bits",
+            "Anchura de la ventana": window.innerWidth + " px",
+            "Altura de la ventana": window.innerHeight + " px",
+            "URL actual": window.location.href,
+            "Protocolo": window.location.protocol,
+            "Nombre del host": window.location.hostname,
+            "Ruta": window.location.pathname,
+            "Puerto": window.location.port || "No especificado"
+        };
+
+        // Selecciona el elemento de la tabla donde se insertará la información
+        const infoTabla = document.getElementById("infoTabla");
+
+        // Recorre el objeto infoNavegador e inserta cada propiedad en una fila de la tabla
+        for (const [propiedad, valor] of Object.entries(infoNavegador)) {
+            const fila = document.createElement("tr");
+            const celdaPropiedad = document.createElement("td");
+            const celdaValor = document.createElement("td");
+            
+            celdaPropiedad.textContent = propiedad;
+            celdaValor.textContent = valor;
+            
+            fila.appendChild(celdaPropiedad);
+            fila.appendChild(celdaValor);
+            infoTabla.appendChild(fila);
+        }
+    </script>
+</body>
+</html>

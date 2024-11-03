@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de la Pantalla</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            max-width: 600px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Propiedad</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody id="pantallaInfo">
+        </tbody>
+    </table>
+
+    <script>
+        // Objeto con la información de la pantalla del cliente
+        const infoPantalla = {
+            "Anchura de la pantalla": screen.width + " px",
+            "Altura de la pantalla": screen.height + " px",
+            "Anchura disponible": screen.availWidth + " px",
+            "Altura disponible": screen.availHeight + " px",
+            "Profundidad de color": screen.colorDepth + " bits",
+            "Resolución de color": screen.pixelDepth + " bits"
+        };
+
+        // Selecciona el elemento de la tabla donde se insertará la información
+        const pantallaInfo = document.getElementById("pantallaInfo");
+
+        // Recorre el objeto infoPantalla e inserta cada propiedad en una fila de la tabla
+        for (const [propiedad, valor] of Object.entries(infoPantalla)) {
+            const fila = document.createElement("tr");
+            const celdaPropiedad = document.createElement("td");
+            const celdaValor = document.createElement("td");
+            
+            celdaPropiedad.textContent = propiedad;
+            celdaValor.textContent = valor;
+            
+            fila.appendChild(celdaPropiedad);
+            fila.appendChild(celdaValor);
+            pantallaInfo.appendChild(fila);
+        }
+    </script>
+</body>
+</html>

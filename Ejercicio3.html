@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Ventanas y Desplazamientos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        a {
+            display: block;
+            margin: 10px 0;
+            font-size: 16px;
+            text-decoration: none;
+            color: #4CAF50;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejercicios de Ventanas y Desplazamientos</h1>
+
+    <a href="#" onclick="mostrarConfirmacion()">a) Mostrar confirmación</a>
+    <a href="#" onclick="abrirYComprobarVentana()">b) Comprobar si la ventana está cerrada</a>
+    <a href="#" onclick="abrirYRenombrarVentana()">c) Renombrar ventana</a>
+    <a href="#" onclick="cerrarVentanaActual()">d) Cerrar ventana actual</a>
+    <a href="#" onclick="cerrarVentanaAbierta()">d) Cerrar ventana abierta</a>
+    <a href="#" onclick="abrirVentanaRedimensionable()">f) Ventana redimensionable de 300x100</a>
+    <a href="#" onclick="abrirVentanaConTexto()">g) Ventana redimensionable con texto en página padre</a>
+    <a href="#" onclick="moverVentana()">h) Mover ventana 50px hacia abajo y derecha</a>
+    <a href="#" onclick="posicionarVentana()">i) Posicionar ventana en un punto específico</a>
+    <a href="#" onclick="moverScroll10()">j) Mover scroll 10px hacia abajo</a>
+    <a href="#" onclick="posicionarScroll()">k) Posicionar scroll a 100px</a>
+
+    <script>
+        let ventanaNueva;
+
+        // a) Ventana de confirmación
+        function mostrarConfirmacion() {
+            const resultado = confirm("¿Estás seguro?");
+            alert("Has seleccionado: " + (resultado ? "Aceptar" : "Cancelar"));
+        }
+
+        // b) Abrir una ventana y comprobar si está cerrada
+        function abrirYComprobarVentana() {
+            ventanaNueva = window.open("", "ventanaNueva", "width=300,height=200");
+            setTimeout(() => {
+                if (ventanaNueva.closed) {
+                    alert("La ventana se ha cerrado");
+                } else {
+                    alert("La ventana sigue abierta");
+                }
+            }, 3000);
+        }
+
+        // c) Abrir ventana y pedir nuevo nombre
+        function abrirYRenombrarVentana() {
+            ventanaNueva = window.open("", "ventanaNueva", "width=300,height=200");
+            const nuevoNombre = prompt("Introduce un nuevo nombre para la ventana:");
+            if (nuevoNombre) {
+                ventanaNueva.document.title = nuevoNombre;
+            }
+        }
+
+        // d) Cerrar la ventana actual
+        function cerrarVentanaActual() {
+            window.close();
+        }
+
+        // d) Cerrar la ventana abierta con window.open()
+        function cerrarVentanaAbierta() {
+            if (ventanaNueva && !ventanaNueva.closed) {
+                ventanaNueva.close();
+            } else {
+                alert("No hay ninguna ventana abierta.");
+            }
+        }
+
+        // f) Abrir ventana redimensionable de 300x100
+        function abrirVentanaRedimensionable() {
+            ventanaNueva = window.open("", "ventanaRedimensionable", "width=300,height=100,resizable=yes");
+        }
+
+        // g) Abrir ventana con texto en página padre
+        function abrirVentanaConTexto() {
+            ventanaNueva = window.open("", "ventanaTexto", "width=300,height=100,resizable=yes");
+            ventanaNueva.document.write("<p>Esta es la ventana secundaria.</p>");
+            document.body.insertAdjacentHTML("beforeend", "<p>Se ha abierto una ventana secundaria con texto.</p>");
+        }
+
+        // h) Mover ventana 50px hacia abajo y derecha
+        function moverVentana() {
+            if (ventanaNueva && !ventanaNueva.closed) {
+                ventanaNueva.moveBy(50, 50);
+            } else {
+                alert("No hay ninguna ventana abierta.");
+            }
+        }
+
+        // i) Posicionar ventana en un punto específico
+        function posicionarVentana() {
+            if (ventanaNueva && !ventanaNueva.closed) {
+                ventanaNueva.moveTo(100, 100); // Posicionar en 100x100 px desde la esquina superior izquierda
+            } else {
+                alert("No hay ninguna ventana abierta.");
+            }
+        }
+
+        // j) Mover scroll 10px hacia abajo
+        function moverScroll10() {
+            window.scrollBy(0, 10);
+        }
+
+        // k) Posicionar scroll a 100px
+        function posicionarScroll() {
+            window.scrollTo(0, 100);
+        }
+    </script>
+</body>
+</html>

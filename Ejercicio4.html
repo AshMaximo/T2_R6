@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Navegación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        a {
+            display: block;
+            margin: 10px 0;
+            font-size: 16px;
+            text-decoration: none;
+            color: #a74caf;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejercicios de Navegación</h1>
+
+    <a href="#marcador" onclick="mostrarNombreMarcador()">a) Ir al marcador y mostrar su nombre</a>
+    <a href="#" onclick="mostrarHost()">b) Mostrar el nombre del host</a>
+    <a href="#" onclick="mostrarURLCompleta()">c) Mostrar URL completa de la página actual</a>
+    <a href="#" onclick="preguntarYActivarURL()">d) Introducir y activar una nueva URL</a>
+    <a href="#" onclick="mostrarProtocolo()">e) Mostrar el protocolo utilizado</a>
+    <a href="#" onclick="recargarPagina()">f) Recargar la página</a>
+
+    <!-- Marcador para el apartado a) -->
+    <div id="marcador" style="margin-top: 1000px;">
+        <a href="#" onclick="alert('Marcador activado: Este es el marcador')">Marcador - Haz clic aquí para ver el nombre</a>
+    </div>
+
+    <script>
+        // a) Moverse al marcador y mostrar el nombre del marcador
+        function mostrarNombreMarcador() {
+            // El enlace ya redirige al marcador automáticamente al hacer clic
+            alert("Has llegado al marcador: 'Marcador - Haz clic aquí para ver el nombre'");
+        }
+
+        // b) Mostrar el nombre del host
+        function mostrarHost() {
+            alert("Host actual: " + window.location.hostname);
+        }
+
+        // c) Mostrar la URL completa de la página actual
+        function mostrarURLCompleta() {
+            alert("URL completa: " + window.location.href);
+        }
+
+        // d) Pedir una URL al usuario y activarla
+        function preguntarYActivarURL() {
+            const url = prompt("Introduce una nueva URL:");
+            if (url) {
+                window.location.href = url;
+            }
+        }
+
+        // e) Mostrar el protocolo utilizado en la página actual
+        function mostrarProtocolo() {
+            alert("Protocolo actual: " + window.location.protocol);
+        }
+
+        // f) Recargar la página
+        function recargarPagina() {
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>
